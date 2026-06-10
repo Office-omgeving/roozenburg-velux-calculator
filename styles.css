@@ -389,6 +389,7 @@ textarea:focus {
   display: grid;
   grid-template-rows: auto;
   gap: 9px;
+  min-width: 0;
   min-height: 148px;
   padding: 16px;
   border: 1px solid var(--line);
@@ -405,8 +406,10 @@ textarea:focus {
 }
 
 .choice-description {
+  min-width: 0;
   color: var(--muted);
   line-height: 1.45;
+  overflow-wrap: break-word;
 }
 
 .choice-card.is-selected {
@@ -415,10 +418,11 @@ textarea:focus {
 }
 
 .choice-card.has-image-card {
-  grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 76px minmax(0, 1fr);
   grid-template-rows: auto auto 1fr;
-  column-gap: 14px;
+  column-gap: 12px;
   min-height: 136px;
+  overflow: hidden;
 }
 
 .choice-card.has-image-card .choice-price {
@@ -433,6 +437,12 @@ textarea:focus {
 .choice-card.has-image-card strong,
 .choice-card.has-image-card .choice-description {
   grid-column: 2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.choice-card.has-image-card .choice-description {
+  font-size: 14px;
 }
 
 .choice-price {
@@ -455,8 +465,8 @@ textarea:focus {
 .choice-visual.has-image {
   display: grid;
   place-items: center;
-  width: 92px;
-  height: 92px;
+  width: 76px;
+  height: 76px;
   background: #ffffff;
 }
 
