@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VELUX offertecalculator</title>
+    <link rel="stylesheet" href="styles.css?v=reset-after-submit">
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Roozenburg calculator">
+          <img class="brand-logo" src="assets/logo-roozenburg.png" alt="Roozenburg">
+        </a>
+        <div class="contact-strip">
+          <span>Hulp nodig?</span>
+          <a href="tel:+3234112800">+32 (0) 3 411 28 00</a>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="progress" aria-label="Voortgang">
+          <button class="progress-item is-active" type="button" data-go-step="1">
+            <span>1</span>
+            <strong>Product</strong>
+          </button>
+          <button class="progress-item" type="button" data-go-step="2">
+            <span>2</span>
+            <strong>Configuratie</strong>
+          </button>
+          <button class="progress-item" type="button" data-go-step="3">
+            <span>3</span>
+            <strong>Offerte</strong>
+          </button>
+          <button class="progress-item" type="button" data-go-step="4">
+            <span>4</span>
+            <strong>Gegevens</strong>
+          </button>
+        </aside>
+
+        <section class="workspace">
+          <div class="step is-active" data-step="1">
+            <div class="step-header">
+              <h1>Kies je VELUX product</h1>
+              <p>Selecteer welk product je wilt configureren en toevoegen aan je offerte.</p>
+            </div>
+            <div class="product-grid" data-products></div>
+          </div>
+
+          <div class="step" data-step="2">
+            <div class="step-header" data-config-top>
+              <h1 data-config-title>Configureer je VELUX product</h1>
+              <p>Doorloop de keuzes in volgorde. Je configuratie en richtprijs worden live bijgewerkt.</p>
+            </div>
+
+            <nav class="config-tabs" aria-label="Configuratiestappen" data-config-tabs></nav>
+            <div class="config-shell">
+              <div class="config-main">
+                <div class="choice-grid" data-choice-grid></div>
+                <div class="config-actions">
+                  <button class="secondary-action" type="button" data-prev-config>Vorige keuze</button>
+                  <button class="primary-action" type="button" data-next-config>Volgende keuze</button>
+                  <button class="primary-action" type="button" data-add-config hidden>Voeg toe aan mijn offerte</button>
+                </div>
+              </div>
+
+              <aside class="configuration-card">
+                <h2>Jouw configuratie</h2>
+                <dl data-live-config></dl>
+                <div class="configuration-total">
+                  <span>Richtprijs incl. btw</span>
+                  <strong data-current-price>€ 0</strong>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="step" data-step="3">
+            <div class="step-header">
+              <h1>Controleer je offerte</h1>
+              <p>Bekijk de gekozen producten en voeg indien nodig nog een product toe.</p>
+            </div>
+            <div class="quote-list" data-quote-list></div>
+            <div class="empty-quote" data-empty-quote>Je hebt nog geen producten toegevoegd aan je offerte.</div>
+            <div class="quote-actions">
+              <button class="secondary-action" type="button" data-add-another>Product toevoegen</button>
+              <button class="primary-action" type="button" data-continue-details>Verder naar gegevens</button>
+            </div>
+          </div>
+
+          <div class="step" data-step="4">
+            <div class="step-header">
+              <h1>Vul je gegevens in</h1>
+              <p>Bezorg je aanvraag en we nemen zo snel mogelijk contact met je op.</p>
+            </div>
+            <form class="form details-form" data-details-form>
+              <div class="field-row">
+                <label for="name">Naam</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field-row">
+                <label for="email">E-mailadres</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field-row">
+                <label for="phone">Telefoon</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="field-row">
+                <label for="postal">Postcode</label>
+                <input id="postal" name="postal" type="text" inputmode="numeric" autocomplete="postal-code" required>
+              </div>
+              <div class="field-row">
+                <label for="message">Opmerking</label>
+                <textarea id="message" name="message" rows="4" placeholder="Bijvoorbeeld: vervanging bestaand dakraam, leien dak, tweede verdieping..."></textarea>
+              </div>
+              <button class="primary-action" type="submit" data-submit-button>Verstuur aanvraag</button>
+              <div class="confirmation" data-confirmation hidden>
+                Je aanvraag is succesvol verzonden, we nemen zo snel mogelijk contact met je op
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <aside class="summary" aria-label="Samenvatting">
+          <div class="summary-box">
+            <h2>Offerte</h2>
+            <dl>
+              <div>
+                <dt>Producten</dt>
+                <dd data-summary-count>0</dd>
+              </div>
+              <div>
+                <dt>Huidige keuze</dt>
+                <dd data-summary-current>Nog geen product</dd>
+              </div>
+              <div>
+                <dt>Richtprijs incl. btw</dt>
+                <dd data-summary-total>€ 0</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="summary-box">
+            <h2>Inbegrepen</h2>
+            <ul>
+              <li>Productkeuze zonder e-mailstart</li>
+              <li>A-F configuratie per product</li>
+              <li>Offerteoverzicht per lijn</li>
+              <li>Opties apart zichtbaar</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js?v=reset-after-submit"></script>
+  </body>
+</html>
