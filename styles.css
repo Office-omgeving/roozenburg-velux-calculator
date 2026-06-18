@@ -277,6 +277,11 @@ textarea:focus {
   background: var(--panel-soft);
 }
 
+.product-card.is-primary-route {
+  border-color: var(--accent-line);
+  background: #fffdf8;
+}
+
 .product-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -289,6 +294,16 @@ textarea:focus {
   grid-template-rows: auto 1fr auto auto;
   gap: 10px;
   padding: 16px;
+}
+
+.product-card.is-primary-route .product-card-content {
+  grid-template-rows: auto auto 1fr auto auto;
+}
+
+.product-route-note {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .product-card h2 {
@@ -326,35 +341,60 @@ textarea:focus {
 }
 
 .config-tabs {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 18px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin: 2px 0 22px;
+}
+
+.config-tabs::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: calc(8.333% + 16px);
+  right: calc(8.333% + 16px);
+  height: 2px;
+  background: var(--line);
 }
 
 .config-tabs button {
+  position: relative;
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr);
-  align-items: center;
-  gap: 9px;
-  min-height: 50px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
+  justify-items: center;
+  gap: 8px;
+  min-height: 58px;
+  padding: 0 4px;
+  border: 0;
   border-radius: var(--radius);
-  background: var(--panel-soft);
+  background: transparent;
   color: var(--muted);
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   font-size: 13px;
 }
 
+.config-tabs button:disabled {
+  cursor: not-allowed;
+  color: #a9a39d;
+}
+
+.config-tabs button:disabled span {
+  border-color: #e7e2db;
+  background: var(--panel);
+  color: #8f8982;
+}
+
 .config-tabs button span {
-  width: 26px;
-  height: 26px;
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #ebe6dd;
+  border: 1px solid var(--line);
+  background: var(--panel);
   color: var(--text);
   font-weight: 800;
 }
@@ -362,18 +402,19 @@ textarea:focus {
 .config-tabs button strong {
   overflow: hidden;
   color: inherit;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
 }
 
-.config-tabs button.is-active {
-  border-color: var(--primary);
-  background: var(--accent-soft);
+.config-tabs button.is-active,
+.config-tabs button.is-complete {
   color: var(--text);
 }
 
-.config-tabs button.is-active span {
+.config-tabs button.is-active span,
+.config-tabs button.is-complete span {
+  border-color: var(--primary);
   background: var(--primary);
   color: #ffffff;
 }
@@ -383,6 +424,10 @@ textarea:focus {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   align-items: stretch;
+}
+
+.choice-grid.is-size-step {
+  grid-template-columns: 1fr;
 }
 
 .choice-card {
@@ -450,6 +495,114 @@ textarea:focus {
   color: var(--accent);
   font-size: 13px;
   font-weight: 800;
+}
+
+.size-config {
+  display: grid;
+  gap: 18px;
+}
+
+.size-code-form {
+  display: grid;
+  gap: 8px;
+  max-width: 620px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+}
+
+.size-code-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.size-code-help,
+.size-code-match,
+.size-empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.size-code-location {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.size-code-location summary {
+  width: max-content;
+  max-width: 100%;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.size-code-location p {
+  margin: 8px 0 0;
+}
+
+.size-code-match {
+  color: var(--text);
+  font-weight: 750;
+}
+
+.size-picker {
+  display: grid;
+  gap: 18px;
+}
+
+.size-picker-group {
+  display: grid;
+  gap: 10px;
+}
+
+.size-picker-group h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.size-width-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.size-width-button {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.size-width-button.is-selected,
+.size-width-button:hover {
+  border-color: var(--primary);
+  background: var(--accent-soft);
+}
+
+.size-height-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.size-height-card {
+  min-height: 112px;
+}
+
+.config-step-note {
+  grid-column: 1 / -1;
+  margin: 0 0 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fffdf8;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .choice-visual {
@@ -846,24 +999,41 @@ textarea:focus {
   }
 
   .config-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(58px, 1fr));
+    margin-right: -18px;
+    margin-left: -18px;
+    padding: 0 18px 4px;
+    overflow-x: auto;
   }
 
   .config-tabs button {
-    min-height: 48px;
-    padding: 9px 10px;
-    gap: 8px;
+    min-height: 56px;
+    padding: 0 2px;
+    gap: 7px;
   }
 
   .config-tabs button span {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     font-size: 12px;
   }
 
   .config-tabs button strong {
     font-size: 12px;
     white-space: normal;
+  }
+
+  .size-code-form {
+    padding: 14px;
+  }
+
+  .size-code-row {
+    grid-template-columns: 1fr;
+  }
+
+  .size-width-grid,
+  .size-height-grid {
+    grid-template-columns: 1fr;
   }
 
   .config-actions {
