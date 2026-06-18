@@ -999,28 +999,41 @@ textarea:focus {
   }
 
   .config-tabs {
-    grid-template-columns: repeat(6, minmax(58px, 1fr));
-    margin-right: -18px;
-    margin-left: -18px;
-    padding: 0 18px 4px;
-    overflow-x: auto;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    margin: 0 0 34px;
+    padding: 0;
+    overflow: visible;
   }
 
   .config-tabs button {
-    min-height: 56px;
-    padding: 0 2px;
-    gap: 7px;
+    min-height: 32px;
+    padding: 0;
+    gap: 0;
   }
 
   .config-tabs button span {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     font-size: 12px;
   }
 
   .config-tabs button strong {
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    display: none;
+    width: max-content;
+    max-width: 118px;
+    color: var(--text);
     font-size: 12px;
+    line-height: 1.15;
+    text-align: center;
+    transform: translateX(-50%);
     white-space: normal;
+  }
+
+  .config-tabs button.is-active strong {
+    display: block;
   }
 
   .size-code-form {
